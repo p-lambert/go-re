@@ -1,7 +1,7 @@
 package gore
 
 /*
-#cgo LDFLAGS: -lz -lm -ldl -lncurses -lLLVM-9 -lclangTooling -lclangFrontendTool -lclangFrontend -lclangDriver -lclangSerialization -lclangCodeGen -lclangParse -lclangSema -lclangStaticAnalyzerFrontend -lclangStaticAnalyzerCheckers -lclangStaticAnalyzerCore -lclangAnalysis -lclangARCMigrate -lclangRewrite -lclangRewriteFrontend -lclangEdit -lclangAST -lclangLex -lclangBasic -lclang
+#cgo LDFLAGS: -lz -lm -ldl -lncurses -lLLVM-9 -lclangCodeGen -lclangTooling -lclangFrontendTool -lclangFrontend -lclangDriver -lclangSerialization -lclangParse -lclangSema -lclangStaticAnalyzerFrontend -lclangStaticAnalyzerCheckers -lclangStaticAnalyzerCore -lclangAnalysis -lclangARCMigrate -lclangRewrite -lclangRewriteFrontend -lclangEdit -lclangAST -lclangASTMatchers -lclangLex -lclangBasic -lclang
 #cgo CPPFLAGS: -I/usr/include -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
 
 #include <stdio.h>
@@ -76,14 +76,4 @@ func NewEBPFCompiler(verbose bool) *EBPFCompiler {
 	})
 
 	return ebpfCompiler
-}
-
-func main() {
-	compiler := NewEBPFCompiler(false)
-
-	if err := compiler.CompileToObjectFile("/tmp/toto.c", "/tmp/toto.o", nil); err != nil {
-		panic(err)
-	}
-
-	runtime.GC()
 }
